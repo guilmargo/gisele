@@ -1,76 +1,376 @@
-<!DOCTYPE html><!DOCTYPE html><!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loja de Trajes - Casamento</title>
-  <style>
-    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #fff8f6; color: #333; }
-    header { background: linear-gradient(to right, #ffd1dc, #fff); padding: 20px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-    nav { display: flex; justify-content: center; gap: 30px; margin-top: 10px; }
-    nav a { text-decoration: none; color: #b06c6c; font-weight: bold; padding: 10px 15px; border-radius: 8px; }
-    nav a:hover { background: #ffe4ec; }
-    section { padding: 40px 20px; max-width: 1000px; margin: auto; }
-    .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-    .galeria img { width: 100%; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-    footer { background: #ffd1dc; text-align: center; padding: 15px; margin-top: 40px; }
-    .botao-upload { display: inline-block; background: #b06c6c; color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; }
-    .botao-upload:hover { background: #a05b5b; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Vows - Wedding Attire Rental</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .auth-section {
+            display: none;
+        }
+        .admin-logged-in .main-site {
+            display: none;
+        }
+        .admin-logged-in .auth-section {
+            display: block;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Encanto dos Trajes</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#catalogo">Catálogo</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </header>
+<body class="bg-gray-50">
+    <!-- Main Website -->
+    <div class="main-site">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-lg">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center">
+                        <span class="text-2xl font-bold text-purple-700">Elegant Vows</span>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#dresses" class="text-gray-700 hover:text-purple-600">Dresses</a>
+                        <a href="#suits" class="text-gray-700 hover:text-purple-600">Suits</a>
+                        <a href="#about" class="text-gray-700 hover:text-purple-600">About</a>
+                        <a href="#contact" class="text-gray-700 hover:text-purple-600">Contact</a>
+                        <button onclick="showAdminLogin()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                            Admin Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
-  <section id="home">
-    <h2>Bem-vindo à nossa loja</h2>
-    <p>Especializada em trajes para casamentos, nossa missão é fazer você brilhar no seu grande dia. Toda semana, novos modelos de vestidos e ternos são adicionados à nossa galeria.</p>
-  </section>
+        <!-- Hero Section -->
+        <section class="gradient-bg text-white">
+            <div class="max-w-7xl mx-auto px-4 py-20">
+                <div class="text-center">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">Find Your Perfect Wedding Attire</h1>
+                    <p class="text-xl mb-8 max-w-3xl mx-auto">
+                        Rent stunning wedding dresses and elegant suits for your special day. 
+                        Premium quality, affordable prices, unforgettable memories.
+                    </p>
+                    <div class="space-x-4">
+                        <a href="#dresses" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100">
+                            Browse Dresses
+                        </a>
+                        <a href="#suits" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600">
+                            Browse Suits
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section id="catalogo">
-    <h2>Catálogo Atualizado</h2>
-    <div class="galeria" id="galeria">
-      <!-- Imagens carregadas automaticamente -->
+        <!-- Dresses Section -->
+        <section id="dresses" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Bridal Dresses</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Dress 1 -->
+                    <div class="item-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                        <div class="h-80 overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/322818f1-89fa-4b49-ae11-89b4f20f2e53.png" alt="Elegant A-line wedding dress with lace detailing and long train in ivory silk" class="w-full h-full object-cover" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a884b7e4-d3db-4535-8917-dacc1c4514d8.png?text=Dress+Image'">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Ivory A-Line Gown</h3>
+                            <p class="text-gray-600 mb-4">Elegant lace detailing with a flowing train</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-purple-600">$199/day</span>
+                                <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dress 2 -->
+                    <div class="item-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                        <div class="h-80 overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/efefa9c9-4fa4-40e1-a1bb-d7cc7141a979.png" alt="Modern mermaid style wedding dress with beaded embroidery and sweetheart neckline" class="w-full h-full object-cover" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/67f3e266-31dd-439f-bef1-0939ba20f5ae.png?text=Dress+Image'">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Mermaid Elegance</h3>
+                            <p class="text-gray-600 mb-4">Beaded embroidery with sweetheart neckline</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-purple-600">$249/day</span>
+                                <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dress 3 -->
+                    <div class="item-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                        <div class="h-80 overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9a346ef3-d82c-4f7b-b5e7-97c43ea535e3.png" alt="Bohemian style wedding dress with floral lace patterns and flowing sleeves" class="w-full h-full object-cover" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c70278ee-fcfa-4690-94f2-9662cc2fd980.png?text=Dress+Image'">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Bohemian Dream</h3>
+                            <p class="text-gray-600 mb-4">Flowing sleeves with intricate lace patterns</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-purple-600">$179/day</span>
+                                <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Suits Section -->
+        <section id="suits" class="py-20 bg-gray-100">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Groom Suits</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Suit 1 -->
+                    <div class="item-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                        <div class="h-80 overflow-hidden">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/730bbef0-cf9d-4fb2-9dcb-e81bdb268bf1.png" alt="Classic black tuxedo with satin lapels and matching trousers for formal weddings" class="w-full h-full object-cover" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bbcf5fe5-8ea6-4081-82d4-f53486f3fc6d.png'">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Classic Black Tuxedo</h3>
+                            <p class="text-gray-600 mb-4">Satin lapels, perfect for formal weddings</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-purple-600">$129/day</span>
+                                <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Suit 2 -->
+                    <div class="item-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                        <div class="h-80 overflow-hidden">
+                            <img src="https://placehold.co/400x500" alt="Navy blue wedding suit with subtle pattern and modern slim fit design" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x500?text=Suit+Image'">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Navy Blue Elegance</h3>
+                            <p class="text-gray-600 mb-4">Modern slim fit with subtle pattern</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-purple-600">$149/day</span>
+                                <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Suit 3 -->
+                    <div class="item-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
+                        <div class="h-80 overflow-hidden">
+                            <img src="https://placehold.co/400x500" alt="Light gray three-piece wedding suit with waistcoat and pocket square" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/400x500?text=Suit+Image'">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Three-Piece Gray</h3>
+                            <p class="text-gray-600 mb-4">Complete with waistcoat and accessories</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-purple-600">$169/day</span>
+                                <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+                                    Rent Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Elegant Vows</h3>
+                        <p class="text-gray-400">Making your special day even more memorable with perfect attire.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#dresses" class="text-gray-400 hover:text-white">Dresses</a></li>
+                            <li><a href="#suits" class="text-gray-400 hover:text-white">Suits</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Contact</h4>
+                        <p class="text-gray-400">123 Wedding Lane</p>
+                        <p class="text-gray-400">Bridal City, WC 12345</p>
+                        <p class="text-gray-400">info@elegantvows.com</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Admin Access</h4>
+                        <button onclick="showAdminLogin()" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+                            Admin Portal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
-    <br>
-    <a class="botao-upload" href="https://script.google.com/macros/s/SEU_SCRIPT_URL/exec" target="_blank">🔐 Painel de Upload</a>
-  </section>
 
-  <section id="contato">
-    <h2>Fale Conosco</h2>
-    <p>Estamos localizados em Cotia/SP. Para agendamento e dúvidas, entre em contato:</p>
-    <ul>
-      <li>📱 WhatsApp: <a href="https://wa.me/5511999999999" target="_blank">(11) 99999-9999</a></li>
-      <li>📧 E-mail: contato@encantodostrajes.com.br</li>
-      <li>📍 <a href="https://maps.google.com" target="_blank">Ver no Google Maps</a></li>
-    </ul>
-  </section>
+    <!-- Admin Authentication Section -->
+    <div class="auth-section fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 fade-in">
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Admin Login</h2>
+                <p class="text-gray-600">Access the management portal</p>
+            </div>
+            <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Username</label>
+                    <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Password</label>
+                    <input type="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+                </div>
+                <button type="submit" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">
+                    Login
+                </button>
+            </form>
+            <button onclick="hideAdminLogin()" class="w-full mt-4 text-gray-600 hover:text-gray-800">
+                Cancel
+            </button>
+        </div>
+    </div>
 
-  <footer>
-    © 2025 Encanto dos Trajes. Todos os direitos reservados.
-  </footer>
+    <!-- Admin Dashboard -->
+    <div class="auth-section hidden">
+        <nav class="bg-gray-800 text-white p-4">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <h1 class="text-xl font-bold">Admin Dashboard</h1>
+                <button onclick="logout()" class="bg-red-600 px-4 py-2 rounded hover:bg-red-700">
+                    Logout
+                </button>
+            </div>
+        </nav>
 
-  <script>
-    async function carregarImagens() {
-      const pastaGoogleDrive = 'ID_DA_PASTA';
-      const imagens = [
-        'https://drive.google.com/uc?id=ID_IMAGEM1',
-        'https://drive.google.com/uc?id=ID_IMAGEM2'
-      ];
-      const galeria = document.getElementById('galeria');
-      imagens.forEach(url => {
-        const img = document.createElement('img');
-        img.src = url;
-        galeria.appendChild(img);
-      });
-    }
-    carregarImagens();
-  </script>
+        <div class="max-w-7xl mx-auto p-6">
+            <h2 class="text-3xl font-bold mb-8">Manage Inventory</h2>
+            
+            <!-- Upload New Items -->
+            <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                <h3 class="text-xl font-semibold mb-4">Upload New Items</h3>
+                <form id="uploadForm" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Item Type</label>
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                                <option value="">Select Type</option>
+                                <option value="dress">Wedding Dress</option>
+                                <option value="suit">Groom Suit</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Item Name</label>
+                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Description</label>
+                        <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg" rows="3" required></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Price per Day ($)</label>
+                        <input type="number" class="w-full px-3 py-2 border border-gray-300 rounded-lg" min="0" step="0.01" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Upload Photos</label>
+                        <input type="file" multiple accept="image/*" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                        <p class="text-sm text-gray-500 mt-1">Upload multiple photos of the item from different angles</p>
+                    </div>
+                    <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700">
+                        Add to Inventory
+                    </button>
+                </form>
+            </div>
+
+            <!-- Current Inventory -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-xl font-semibold mb-4">Current Inventory</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Sample inventory items would be loaded here -->
+                    <div class="border rounded-lg p-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/13d845fc-36c7-4823-b7ca-62377b989668.png" alt="Wedding dress inventory item awaiting upload" class="w-full h-48 object-cover rounded mb-3" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9e9f012c-4800-4b84-9919-35b6a7daead9.png'">
+                        <h4 class="font-semibold">Sample Dress</h4>
+                        <p class="text-gray-600">$199/day</p>
+                        <div class="mt-2 space-x-2">
+                            <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm">Edit</button>
+                            <button class="bg-red-600 text-white px-3 py-1 rounded text-sm">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Admin authentication (simple frontend demo - in real app, use proper backend auth)
+        function showAdminLogin() {
+            document.querySelector('.auth-section').classList.remove('hidden');
+        }
+
+        function hideAdminLogin() {
+            document.querySelector('.auth-section').classList.add('hidden');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            // Simple demo authentication - in real app, use proper backend authentication
+            const username = e.target[0].value;
+            const password = e.target[1].value;
+            
+            if (username === 'admin' && password === 'admin123') {
+                document.body.classList.add('admin-logged-in');
+                hideAdminLogin();
+            } else {
+                alert('Invalid credentials. Demo: username=admin, password=admin123');
+            }
+        }
+
+        function logout() {
+            document.body.classList.remove('admin-logged-in');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Handle file upload form submission
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Item uploaded successfully! (This would connect to a backend in a real application)');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
