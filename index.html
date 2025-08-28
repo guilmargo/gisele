@@ -368,31 +368,35 @@
         }
 
         // Form submission handler for Formspree
-        document.querySelector('form[action="https://formspree.io/f/xblalydp"]').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            
-            fetch('https://formspree.io/f/xblalydp', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) {
-                    alert('Item submitted successfully! You will receive an email confirmation.');
-                    this.reset();
-                } else {
-                    alert('There was an error submitting the form. Please try again.');
-                }
-            })
-            .catch(error => {
-                alert('Error: ' + error.message);
-            });
-        });
-
+document.querySelector('form[action="https://formspree.io/f/xblalydp"]').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    
+    fetch('https://formspree.io/f/xblalydp', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.ok) {
+            alert('Item submitted successfully! You will receive an email confirmation.');
+            this.reset();
+        } else {
+            alert('There was an error submitting the form: ' + data.errors.map(error => error.message).join(', '));
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error.message);
+    });
+});
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -409,3 +413,4 @@
     </script>
 </body>
 </html>
+
