@@ -84,7 +84,7 @@
                     <!-- Dress 1 -->
                     <div class="item-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
                         <div class="h-80 overflow-hidden">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/322818f1-89fa-4b49-ae11-89b4f20f2e53.png" alt="Elegant A-line wedding dress with lace detailing and long train in ivory silk" class="w-full h-full object-cover" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a884b7e4-d3db-4535-8917-dacc1c4514d8.png?text=Dress+Image'">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/322818f1-89fa-4b49-ae11-89b4f20f2e53.png" alt="Elegant A-line wedding dress with lace detailing and long train in ivory silk" class="w-full h-full object-cover" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a884b7e4-d3db-4535-8917-dacc1c4514d8.png'">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Ivory A-Line Gown</h3>
@@ -101,7 +101,7 @@
                     <!-- Dress 2 -->
                     <div class="item-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
                         <div class="h-80 overflow-hidden">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/efefa9c9-4fa4-40e1-a1bb-d7cc7141a979.png" alt="Modern mermaid style wedding dress with beaded embroidery and sweetheart neckline" class="w-full h-full object-cover" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/67f3e266-31dd-439f-bef1-0939ba20f5ae.png?text=Dress+Image'">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/efefa9c9-4fa4-40e1-a1bb-d7cc7141a979.png" alt="Modern mermaid style wedding dress with beaded embroidery and sweetheart neckline" class="w-full h-full object-cover" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/67f3e266-31dd-439f-bef1-0939ba20f5ae.png'">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Mermaid Elegance</h3>
@@ -118,7 +118,7 @@
                     <!-- Dress 3 -->
                     <div class="item-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300">
                         <div class="h-80 overflow-hidden">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9a346ef3-d82c-4f7b-b5e7-97c43ea535e3.png" alt="Bohemian style wedding dress with floral lace patterns and flowing sleeves" class="w-full h-full object-cover" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c70278ee-fcfa-4690-94f2-9662cc2fd980.png?text=Dress+Image'">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9a346ef3-d82c-4f7b-b5e7-97c43ea535e3.png" alt="Bohemian style wedding dress with floral lace patterns and flowing sleeves" class="w-full h-full object-cover" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c70278ee-fcfa-4690-94f2-9662cc2fd980.png'">
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Bohemian Dream</h3>
@@ -270,11 +270,11 @@
             <!-- Upload New Items -->
             <div class="bg-white rounded-xl shadow-md p-6 mb-8">
                 <h3 class="text-xl font-semibold mb-4">Upload New Items</h3>
-                <form id="uploadForm" class="space-y-4">
+                <form action="https://formspree.io/f/xblalydp" method="POST" enctype="multipart/form-data" class="space-y-4">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-gray-700 mb-2">Item Type</label>
-                            <select class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                            <select name="itemType" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
                                 <option value="">Select Type</option>
                                 <option value="dress">Wedding Dress</option>
                                 <option value="suit">Groom Suit</option>
@@ -282,95 +282,13 @@
                         </div>
                         <div>
                             <label class="block text-gray-700 mb-2">Item Name</label>
-                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                            <input type="text" name="itemName" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
                         </div>
                     </div>
                     <div>
                         <label class="block text-gray-700 mb-2">Description</label>
-                        <textarea class="w-full px-3 py-2 border border-gray-300 rounded-lg" rows="3" required></textarea>
+                        <textarea name="description" class="w-full px-3 py-2 border border-gray-300 rounded-lg" rows="3" required></textarea>
                     </div>
                     <div>
                         <label class="block text-gray-700 mb-2">Price per Day ($)</label>
-                        <input type="number" class="w-full px-3 py-2 border border-gray-300 rounded-lg" min="0" step="0.01" required>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2">Upload Photos</label>
-                        <input type="file" multiple accept="image/*" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
-                        <p class="text-sm text-gray-500 mt-1">Upload multiple photos of the item from different angles</p>
-                    </div>
-                    <button type="submit" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700">
-                        Add to Inventory
-                    </button>
-                </form>
-            </div>
-
-            <!-- Current Inventory -->
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <h3 class="text-xl font-semibold mb-4">Current Inventory</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Sample inventory items would be loaded here -->
-                    <div class="border rounded-lg p-4">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/13d845fc-36c7-4823-b7ca-62377b989668.png" alt="Wedding dress inventory item awaiting upload" class="w-full h-48 object-cover rounded mb-3" onerror="this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9e9f012c-4800-4b84-9919-35b6a7daead9.png'">
-                        <h4 class="font-semibold">Sample Dress</h4>
-                        <p class="text-gray-600">$199/day</p>
-                        <div class="mt-2 space-x-2">
-                            <button class="bg-blue-600 text-white px-3 py-1 rounded text-sm">Edit</button>
-                            <button class="bg-red-600 text-white px-3 py-1 rounded text-sm">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Admin authentication (simple frontend demo - in real app, use proper backend auth)
-        function showAdminLogin() {
-            document.querySelector('.auth-section').classList.remove('hidden');
-        }
-
-        function hideAdminLogin() {
-            document.querySelector('.auth-section').classList.add('hidden');
-        }
-
-        function handleAdminLogin(e) {
-            e.preventDefault();
-            // Simple demo authentication - in real app, use proper backend authentication
-            const username = e.target[0].value;
-            const password = e.target[1].value;
-            
-            if (username === 'admin' && password === 'admin123') {
-                document.body.classList.add('admin-logged-in');
-                hideAdminLogin();
-            } else {
-                alert('Invalid credentials. Demo: username=admin, password=admin123');
-            }
-        }
-
-        function logout() {
-            document.body.classList.remove('admin-logged-in');
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Handle file upload form submission
-        document.getElementById('uploadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Item uploaded successfully! (This would connect to a backend in a real application)');
-            this.reset();
-        });
-    </script>
-</body>
-</html>
+                        <input type
