@@ -381,7 +381,9 @@ document.querySelector('form[action="https://formspree.io/f/xblalydp"]').addEven
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
+            return response.json().then(err => {
+                throw new Error(err.errors.map(error => error.message).join(', '));
+            });
         }
         return response.json();
     })
@@ -413,4 +415,5 @@ document.querySelector('form[action="https://formspree.io/f/xblalydp"]').addEven
     </script>
 </body>
 </html>
+
 
